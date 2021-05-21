@@ -1,6 +1,7 @@
 {
   // Union Types (=or) 🎉 활용도 매우 높음
   // 발생할수 있는 모든 케이스 중에 하나만 할당 가능해요.
+  // 딱 하나만 ! 오케?!
   type Direction = 'left'|'right'|'up'|'down';
   function move(direction:Direction){
     console.log(direction);
@@ -28,17 +29,27 @@ type SucessState = {
   }
 }
 type FailState = {
-  reson:string;
+  reason:string;
 }
 type LoginState = SucessState|FailState;
 
-function login():LoginState{
-  return{
-    response:{
-      body:"logged in !"
-    },
-  };
-}
+// function login():LoginState{
+//   return{
+//     response:{
+//       body:"logged in !"
+//     },
+//   };
+// }
+
+//어떤 타입이냐에 따라서 다르게 출력되는 로직을 만들어 보잣 :)
+// function printLoginState(state:LoginState){
+//   if('response' in state){
+//     console.log(`🎉 ${state.response.body}`)
+//   }else{
+//     console.log(`🎉 ${state.reason}`)
+//   }
+// }
+
 
 
 
