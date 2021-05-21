@@ -33,7 +33,7 @@
 
   //Optional Parameter
   //lastName?: string => string 타입을 전달해도 되고, undefined을 전달해도 된다.
-  // 전달하지 아노으면 undefined가 될수 있지만
+  // 전달하지 않으면 undefined가 될수 있지만
   function PrintName(firstName: string, lastName?: string) {
     console.log(firstName);
     console.log(lastName);
