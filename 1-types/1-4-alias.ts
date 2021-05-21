@@ -21,5 +21,8 @@
   type Name = 'name';
   let minaName:Name;
   minaName = 'name';
+
+  type Boal = true;
+  const isCat:Boal = true;
   
 }
