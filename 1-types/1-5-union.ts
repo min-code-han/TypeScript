@@ -12,14 +12,34 @@
   const tile :TileSize = 3;
   //다른 숫자 입력하면 에러나요.
 
- type isSucess = 'sucess'|'fail';
- function LOGIN (login:isSucess){
-   if ('sucess'){
-     console.log("give me User's data")
-   }
-   else if('fail'){
-     console.log('try again :)')
-   }
- }
- LOGIN('fail')
+//  type isSucess = 'sucess'|'fail';
+//  function LOGIN (login:isSucess){
+//    if ('sucess'){
+//      console.log("give me User's data")
+//    }
+//    else if('fail'){
+//      console.log('try again :)')
+//    }
+//  }
+//  LOGIN('fail')
+type SucessState = {
+  response:{
+    body:string;
+  }
+}
+type FailState = {
+  reson:string;
+}
+type LoginState = SucessState|FailState;
+
+function login():LoginState{
+  return{
+    response:{
+      body:"logged in !"
+    },
+  };
+}
+
+
+
 } 
