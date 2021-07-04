@@ -6,15 +6,46 @@ interface Stack {
   pop(): string;
 }
 
-class StackImpl implements Stack{
-  private _size: number; // _를 사용하면 이 scope 내부 에서만 사영한다 라는 싸인 이에요
-  get size: (){
-    return this._size;
+type StackNode = {
+  readonly value: string;
+  // next: StackNode | undefined; => optional
+  readonly next?: StackNode;
+};
+
+class StackImpl implements Stack {
+  private _size: 0; // _를 사용하면 이 scope 내부 에서만 사영한다 라는 싸인 이에요
+  private head?: StackNode
+
+  constructor(private capacity: number){}
+    get size() {
+      return this._size;
+    }
+
+    push(value: string) {
+      this._size++;
+      const node: StackNode = { value, next: this.head };
+      this.head = node;
+    }
+    pop(): string {
+      if(this.head == null){
+        throw new Error('Stack is empty!');
+      }
+      const node = this.head;
+      this.head = node.next;
+      this._size--;
+      return node.value;
+    }
+    
   }
-  push(value: string){
-    this._size++;
-  }
-  pop(): string {
-    this._size--;
-  }
+ 
+  
 }
+
+const stack = new StackImpl();
+stack.push('mina 1');
+stack.push('bob 2');
+stack.push('hoon 3');
+while(stack.size !== 0){
+  console.log(stack.pop());
+}
+
