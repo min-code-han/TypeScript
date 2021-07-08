@@ -36,10 +36,18 @@ class StackImpl<T> implements Stack<T> {
   }
 }
 
-const stack = new StackImpl(10);
+const stack = new StackImpl<string>(10);
 stack.push('Ellie 1');
 stack.push('Bob 2');
 stack.push('Steve 3');
 while (stack.size !== 0) {
   console.log(stack.pop());
+}
+
+const stack2 = new StackImpl<number>(10);
+stack2.push(123);
+stack2.push(456);
+stack2.push(789);
+while (stack2.size !== 0) {
+  console.log(stack2.pop());
 }
